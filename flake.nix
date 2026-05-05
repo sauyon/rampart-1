@@ -35,6 +35,21 @@
         };
       });
 
+      devShells = forAllSystems (pkgs: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [
+            go
+            gopls
+            golangci-lint
+            govulncheck
+            goreleaser
+            d2
+            gnumake
+            git
+          ];
+        };
+      });
+
       formatter = forAllSystems (pkgs: pkgs.nixpkgs-fmt);
     };
 }
